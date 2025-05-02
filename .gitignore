@@ -1,0 +1,72 @@
+# Ignore environment variables
+.env
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore IDE/editor configs
+.vscode/
+.idea/
+
+# Ignore logs and temporary files
+*.log
+
+# Ignore credentials JSON files
+speech-to-text.json
+text-to-speech.json
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # Ignore environment variable files
+# .env
+
+# # __pycache__ folders (Python compiled files)
+# __pycache__/
+
+# # Ignore virtual environment folders
+# venv/
+# env/
+
+
+# # Ignore IDE/editor configs
+# *.vscode/
+# *.idea/
+
+# # Ignore logs or temporary files
+# *.log
+
+# # Go to your project directory
+# cd "D:\flask apps\weatherapp"
+
+# # Remove the sensitive files from Git
+# git rm --cached speech-to-text.json
+# git rm --cached text-to-speech.json
+
+# # Add a .gitignore so they are not committed again
+# echo "weatherappsearch-457920-*.json" >> .gitignore
+# git add .gitignore
+
+# # Amend the commit to remove the secrets
+# git commit --amend
