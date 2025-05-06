@@ -66,6 +66,9 @@ function startRecording() {
                     console.error('Error:', error);
                     alert('Could not recognize your speech. Please try again.');
                 });
+                // ✅ This line releases the mic for reuse
+                stream.getTracks().forEach(track => track.stop());
+
             };
             
             
