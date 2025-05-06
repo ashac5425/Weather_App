@@ -7,6 +7,7 @@ from weather import get_weather, post_weather
 from speech_services import convert_speech_to_text, convert_text_to_speech
 from io import BytesIO
 from google.cloud import speech
+from geotext import GeoText
 
 load_dotenv()
 
@@ -54,6 +55,8 @@ def post_weather_route():
     return post_weather(token, data)
 
 
+
+
 @app.route('/speechtotext', methods=['POST'])
 def speech_to_text():
     if 'audio' not in request.files:
@@ -69,9 +72,18 @@ def speech_to_text():
         if not transcript:
             return jsonify({'error': 'Could not transcribe audio'}), 400
 
-        city = transcript.strip().title()
-        print(f"Transcripted city: {city}")
-        return jsonify({'city': city})
+        print("Transcript:", transcript)
+
+        # 🔍 Extract cities using GeoText
+        places = GeoText(transcript)
+        cities = places.cities
+        print("Extracted cities:", cities)
+
+        if not cities:
+            return jsonify({'error': 'No city found in your sentence'}), 200
+
+        # Return first city found
+        return jsonify({'city': cities[0]})
 
     except Exception as e:
         print("Error in /speechtotext:", e)

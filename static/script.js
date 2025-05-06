@@ -58,6 +58,8 @@ function startRecording() {
                 })
                 .then(data => {
                     console.log('City:', data.city);
+                    document.getElementById('city').value = data.city;
+
                     fetchWeather(data.city); // use city from voice
                 })
                 .catch(error => {
